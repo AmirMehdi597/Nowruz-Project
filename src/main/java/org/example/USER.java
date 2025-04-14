@@ -10,4 +10,6 @@ public abstract class USER {
     public abstract void showAvailableMusic();
 
     public void rewritelyrics() {};
+
+    public abstract void Follow(String Artistname);
 }

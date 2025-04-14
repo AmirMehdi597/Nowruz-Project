@@ -30,7 +30,7 @@ public class Artist extends USER{
 
     @Override
     public void play() {
-
+    System.out.println("You played this Song");
     }
 
     void music(){
@@ -51,11 +51,10 @@ public class Artist extends USER{
     }
 
     void addmusic(String musicname) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = currentDateTime.format(formatter);
+        Scanner s = new Scanner(System.in);
+        s.nextInt();
         musiclist.add(musicname);
-        System.out.println("music:" +  musicname + "in " + formattedDateTime + "added");
+        System.out.println("music:" +  musicname + "added");
     }
 
     @Override
@@ -64,6 +63,11 @@ public class Artist extends USER{
         for(int i = 0; i < musiclist.size(); i++){
         System.out.println((i + 1) + ". " + musiclist.get(i));
         }
+    }
+
+    @Override
+    public void Follow(String Artistname) {
+        System.out.println("You followed " + Artistname);
     }
 
     public static ArrayList<String> getMusicList() {
