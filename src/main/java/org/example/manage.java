@@ -3,44 +3,67 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class User {
-    String username;
-    String password;
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-}
 
 public class manage {
-    private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<USER> users = new ArrayList<>();
 
     public static boolean signUp(String username, String password) {
-        if (username == null || username.trim().isEmpty()) {
-            System.out.println("Please input username");
-            return false;
-        }
-
-        if (password == null || password.length() < 8) {
-            System.out.println("Password must be at least 8 characters");
-            return false;
-        }
-
-        for (User user : users) {
-            if (user.username.equals(username)) {
-                System.out.println("This username is already in use");
+        System.out.println("please pick who you are");
+        System.out.println("1.Artist\n2.Person");
+        Scanner sc = new Scanner(System.in);
+        int choice = sc.nextInt();
+        if (choice == 1) {
+            if (username == null || username.trim().isEmpty()) {
+                System.out.println("Please input username");
                 return false;
             }
-        }
 
-        users.add(new User(username, password));
-        System.out.println("Registration successful");
-        return true;
+            if (password == null || password.length() < 8) {
+                System.out.println("Password must be at least 8 characters");
+                return false;
+            }
+
+            for (USER user : users) {
+                if (user.username.equals(username)) {
+                    System.out.println("This username is already used");
+                    return false;
+                }
+            }
+
+            Main.user = new Artist(username, password);
+            users.add(Main.user);
+            System.out.println("Registration successful");
+            return true;
+        }
+        else if (choice == 2) {
+            if (username == null || username.trim().isEmpty()) {
+                System.out.println("Please input username");
+                return false;
+            }
+
+            if (password == null || password.length() < 8) {
+                System.out.println("Password must be at least 8 characters");
+                return false;
+            }
+
+            for (USER user : users) {
+                if (user.username.equals(username)) {
+                    System.out.println("This username is already in use");
+                    return false;
+                }
+            }
+
+            Main.user = new Person(username, password);
+            users.add(Main.user);
+            System.out.println("Registration successful");
+            return true;
+        }
+        return false;
     }
 
+
     public static boolean login(String username, String password) {
-        for (User user : users) {
+        for (USER user : users) {
             if (user.username.equals(username) && user.password.equals(password)) {
                 System.out.println("Login successful");
                 return true;
@@ -50,13 +73,8 @@ public class manage {
         return false;
     }
 
-    public static User authenticate() {
+    public static USER authenticate() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Please pick who you are:");
-        System.out.println("1 - User\n2 - Artist");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
 
         System.out.println("Do you want to login or sign up?");
         System.out.println("1 - Login");
@@ -69,22 +87,20 @@ public class manage {
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
-        if (choice == 1 || choice == 2) {
             if (actionChoice == 1) {
                 if (login(username, password)) {
-                    System.out.println("Login successful as " + (choice == 1 ? "User" : "Artist"));
+                    System.out.println("Login successful");
                 } else {
                     System.out.println("Login failed");
                 }
             } else if (actionChoice == 2) {
                 if (signUp(username, password)) {
-                    System.out.println("Sign up successful as " + (choice == 1 ? "User" : "Artist"));
-                    return new User(username, password);
-                } else {
+                    System.out.println("Sign up successful ");}
+                else {
                     System.out.println("Sign up failed");
                 }
             }
-        } else {
+         else {
             System.out.println("Invalid choice. Please select a valid option.");
         }
 

@@ -7,7 +7,12 @@ import java.time.format.DateTimeFormatter;
 
 public class Artist extends USER{
     private String musicname;
-    private static ArrayList<String> musiclist;
+    private static ArrayList<String> musiclist = new ArrayList<>();
+    private static ArrayList<String> albumlist = new ArrayList<>();
+
+    public Artist(String username, String password) {
+        super(username, password);
+    }
 
     @Override
     public void like() {
@@ -33,26 +38,20 @@ public class Artist extends USER{
     System.out.println("You played this Song");
     }
 
-    void music(){
-        System.out.println("music name:" + musicname);
-    }
-
-    void musiclyric(){
-        Scanner s = new Scanner(System.in);
-        String choice = s.nextLine();
+    void musiclyric(String musicName) {
         System.out.println("your lyrics upload successfully");
     }
 
     void makeAlbum(String musicname){
+        System.out.println("write the name of album");
         Scanner s = new Scanner(System.in);
         String Allbumname = s.nextLine();
         System.out.println("your album name:" + Allbumname);
         System.out.println("your album music name:" + musicname);
+        System.out.println("you create album");
     }
 
     void addmusic(String musicname) {
-        Scanner s = new Scanner(System.in);
-        s.nextInt();
         musiclist.add(musicname);
         System.out.println("music:" +  musicname + "added");
     }
@@ -73,4 +72,5 @@ public class Artist extends USER{
     public static ArrayList<String> getMusicList() {
         return musiclist;
     }
+
 }

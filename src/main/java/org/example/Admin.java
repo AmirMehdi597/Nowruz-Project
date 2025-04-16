@@ -2,9 +2,8 @@ package org.example;
 
 
 public class Admin {
-
-    void checkrequest(String requestnotif) {
-        System.out.println("Your request is " + requestnotif);
+    void acceptrequest() {
+        System.out.println("you send request for this job");
         System.out.println("Admin accepted this request");
     }
 
