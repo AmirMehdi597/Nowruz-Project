@@ -3,7 +3,7 @@ package org.example;
 
 public class Admin {
     void acceptrequest() {
-        System.out.println("you send request for this job");
+        System.out.println("request for this job...");
         System.out.println("Admin accepted this request");
     }
 
