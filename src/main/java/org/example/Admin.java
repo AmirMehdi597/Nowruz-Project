@@ -3,8 +3,8 @@ package org.example;
 
 public class Admin {
     void acceptrequest() {
-        System.out.println("request for this job...");
-        System.out.println("Admin accepted this request");
+        System.out.println("request for check activity...");
+        System.out.println("Every thing is ok");
     }
 
     void checkactivity(String artistname){
